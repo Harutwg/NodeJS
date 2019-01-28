@@ -1,7 +1,9 @@
-import { ProductModel, UserModel } from "./models";
-import config  from './config/config.json';
+//import { ProductModel, UserModel } from "./models";
+import DirWatcher from './services/DirWatcher';
+import Importer from './services/Importer';
 
-console.log(config.name);
+const dirWatcher = new DirWatcher();
+const importer = new Importer();
 
-new ProductModel();
-new UserModel();
+dirWatcher.watch(`${__dirname}/data`, 5000);
+importer.listen();
